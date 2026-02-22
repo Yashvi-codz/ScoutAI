@@ -1,0 +1,140 @@
+// ═══════════════════════════════════════════════════════
+//  ScoutAI — Mock Athlete Data
+//  Replace with Firebase Firestore data in production
+// ═══════════════════════════════════════════════════════
+
+export const MOCK_ATHLETES = [
+  {
+    id: 'ath_001',
+    name: 'Priya Verma',
+    age: 16,
+    position: 'Striker',
+    region: 'UP',
+    height: 162,
+    weight: 55,
+    avatar: 'PV',
+    assessmentDate: '2025-02-14',
+    metrics: {
+      speed: 91,
+      acceleration: 88,
+      agility: 85,
+      balance: 80,
+      technique: 89,
+      stamina: 82,
+    },
+    history: [
+      { date: 'Dec 2024', speed: 84, acceleration: 81, agility: 78, balance: 73, technique: 82, stamina: 76 },
+      { date: 'Jan 2025', speed: 87, acceleration: 84, agility: 81, balance: 76, technique: 85, stamina: 79 },
+      { date: 'Feb 2025', speed: 91, acceleration: 88, agility: 85, balance: 80, technique: 89, stamina: 82 },
+    ],
+  },
+  {
+    id: 'ath_002',
+    name: 'Riya Sharma',
+    age: 17,
+    position: 'Winger',
+    region: 'Delhi',
+    height: 158,
+    weight: 52,
+    avatar: 'RS',
+    assessmentDate: '2025-02-10',
+    metrics: {
+      speed: 82,
+      acceleration: 79,
+      agility: 76,
+      balance: 61,
+      technique: 80,
+      stamina: 65,
+    },
+    history: [
+      { date: 'Nov 2024', speed: 74, acceleration: 70, agility: 68, balance: 55, technique: 72, stamina: 58 },
+      { date: 'Jan 2025', speed: 78, acceleration: 74, agility: 72, balance: 58, technique: 76, stamina: 62 },
+      { date: 'Feb 2025', speed: 82, acceleration: 79, agility: 76, balance: 61, technique: 80, stamina: 65 },
+    ],
+  },
+  {
+    id: 'ath_003',
+    name: 'Aarav Singh',
+    age: 18,
+    position: 'Defender',
+    region: 'Punjab',
+    height: 178,
+    weight: 71,
+    avatar: 'AS',
+    assessmentDate: '2025-02-08',
+    metrics: {
+      speed: 68,
+      acceleration: 65,
+      agility: 70,
+      balance: 82,
+      technique: 67,
+      stamina: 79,
+    },
+    history: [
+      { date: 'Nov 2024', speed: 64, acceleration: 61, agility: 66, balance: 76, technique: 62, stamina: 74 },
+      { date: 'Jan 2025', speed: 66, acceleration: 63, agility: 68, balance: 79, technique: 64, stamina: 77 },
+      { date: 'Feb 2025', speed: 68, acceleration: 65, agility: 70, balance: 82, technique: 67, stamina: 79 },
+    ],
+  },
+  {
+    id: 'ath_004',
+    name: 'Meera Nair',
+    age: 15,
+    position: 'Midfielder',
+    region: 'Kerala',
+    height: 155,
+    weight: 48,
+    avatar: 'MN',
+    assessmentDate: '2025-01-28',
+    metrics: {
+      speed: 55,
+      acceleration: 52,
+      agility: 58,
+      balance: 61,
+      technique: 60,
+      stamina: 54,
+    },
+    history: [
+      { date: 'Nov 2024', speed: 50, acceleration: 47, agility: 52, balance: 55, technique: 54, stamina: 49 },
+      { date: 'Jan 2025', speed: 55, acceleration: 52, agility: 58, balance: 61, technique: 60, stamina: 54 },
+    ],
+  },
+  {
+    id: 'ath_005',
+    name: 'Kavya Reddy',
+    age: 17,
+    position: 'Full-Back',
+    region: 'Telangana',
+    height: 161,
+    weight: 56,
+    avatar: 'KR',
+    assessmentDate: '2025-02-18',
+    metrics: {
+      speed: 74,
+      acceleration: 72,
+      agility: 78,
+      balance: 76,
+      technique: 71,
+      stamina: 75,
+    },
+    history: [
+      { date: 'Dec 2024', speed: 68, acceleration: 66, agility: 72, balance: 70, technique: 65, stamina: 69 },
+      { date: 'Feb 2025', speed: 74, acceleration: 72, agility: 78, balance: 76, technique: 71, stamina: 75 },
+    ],
+  },
+];
+
+// Demo user report (shown on first login for player)
+export const DEMO_REPORT = {
+  id: 'report_demo',
+  date: '2025-02-22',
+  videoName: 'sprint_drill_sample.mp4',
+  metrics: {
+    speed: 78,
+    acceleration: 74,
+    agility: 71,
+    balance: 65,
+    technique: 76,
+    stamina: 68,
+  },
+};
