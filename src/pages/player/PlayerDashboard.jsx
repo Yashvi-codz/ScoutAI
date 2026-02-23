@@ -47,6 +47,15 @@ export default function PlayerDashboard({ user, onNavigate, report }) {
           </div>
         </div>
 
+        {/* ── Dashboard image (below welcome, above quote) ── */}
+        <div style={{ marginBottom: 32, borderRadius: 16, overflow: 'hidden',display:'block' }}>
+          <img
+            src="/dashboard.webp"
+            alt="ScoutAI Dashboard"
+            style={{ paddingLeft:'200px',width: 'auto', height: '470px', display: 'block', objectFit: 'cover' ,alignItems:'center'}}
+          />
+        </div>
+
         {/* ── Quote (center of page) ── */}
         <div className="fade-up" style={{ textAlign: 'center', marginBottom: 40, padding: '32px 24px' }}>
           <p style={{
