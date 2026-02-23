@@ -25,7 +25,6 @@ import {
   classifyTier,
   recommendPositions,
   generateDevelopmentPlan,
-  getOpportunities,
   getBenchmarks,
 } from "../../engine/tierEngine";
 import { generateSWOT } from "../../engine/swotEngine";
@@ -57,7 +56,6 @@ export default function ResultsPage({ user, report }) {
   const swot = generateSWOT(report.metrics, benchmarks);
   const positions = recommendPositions(report.metrics);
   const devPlan = generateDevelopmentPlan(report.metrics, tier);
-  const opps = getOpportunities(score, user.region);
 
   // Radar chart data
   const radarData = Object.entries(report.metrics).map(([key, val]) => ({
@@ -216,7 +214,7 @@ export default function ResultsPage({ user, report }) {
         </div>
       </div>
 
-      {/* ── SWOT Analysis ── */}
+      {/* ── SWOT Analysis (2×2: Strength, Weakness, Opportunities, Threat) ── */}
       <div
         className="fade-up"
         style={{ marginBottom: 24, animationDelay: "0.14s" }}
@@ -228,7 +226,8 @@ export default function ResultsPage({ user, report }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr 1fr",
+            gridTemplateColumns: "1fr 1fr",
+            gridTemplateRows: "auto auto",
             gap: 14,
           }}
         >
@@ -490,113 +489,49 @@ export default function ResultsPage({ user, report }) {
         </div>
       </div>
 
-      {/* ── Positions + Opportunities + Dev Plan ── */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1.2fr",
-          gap: 20,
-        }}
-      >
-        {/* Positions */}
-        <div className="card fade-up" style={{ animationDelay: "0.2s" }}>
+      {/* ── Best Positions ── */}
+      <div className="fade-up" style={{ marginBottom: 24, animationDelay: "0.2s" }}>
+        <div className="card">
           <SectionHeader title="BEST POSITIONS" />
-          {positions.map((pos, i) => (
-            <div
-              key={pos}
-              style={{
-                padding: "14px 16px",
-                marginBottom: 10,
-                border: `1px solid ${i === 0 ? "rgba(0,255,135,0.25)" : "var(--border)"}`,
-                background: i === 0 ? "rgba(0,255,135,0.05)" : "var(--surface)",
-                borderRadius: 10,
-              }}
-            >
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            {positions.map((pos, i) => (
               <div
+                key={pos}
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
+                  padding: "14px 16px",
+                  border: `1px solid ${i === 0 ? "rgba(0,255,135,0.25)" : "var(--border)"}`,
+                  background: i === 0 ? "rgba(0,255,135,0.05)" : "var(--surface)",
+                  borderRadius: 10,
                 }}
               >
-                <span style={{ fontSize: 14, fontWeight: 600 }}>{pos}</span>
-                <span
-                  style={{
-                    fontSize: 10,
-                    fontFamily: "var(--font-mono)",
-                    color: i === 0 ? "var(--green)" : "var(--muted)",
-                    background:
-                      i === 0
-                        ? "rgba(0,255,135,0.1)"
-                        : "rgba(255,255,255,0.04)",
-                    padding: "2px 8px",
-                    borderRadius: 4,
-                  }}
-                >
-                  #{i + 1}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Opportunities */}
-        <div className="card fade-up" style={{ animationDelay: "0.23s" }}>
-          <SectionHeader
-            title="OPPORTUNITIES"
-            subtitle="Based on your EPI score"
-          />
-          {opps.map((o, i) => (
-            <div
-              key={i}
-              style={{
-                display: "flex",
-                gap: 12,
-                alignItems: "flex-start",
-                marginBottom: 12,
-                paddingBottom: 12,
-                borderBottom:
-                  i < opps.length - 1 ? "1px solid var(--border)" : "none",
-              }}
-            >
-              <div
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  marginTop: 5,
-                  flexShrink: 0,
-                  background:
-                    o.type === "trial"
-                      ? "var(--green)"
-                      : o.type === "academy"
-                        ? "var(--cyan)"
-                        : "var(--amber)",
-                }}
-              />
-              <div>
-                <div
-                  style={{
-                    fontSize: 11,
-                    color: "var(--muted)",
-                    fontFamily: "var(--font-mono)",
-                    marginBottom: 2,
-                  }}
-                >
-                  {o.level}
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span style={{ fontSize: 14, fontWeight: 600 }}>{pos}</span>
+                  <span
+                    style={{
+                      fontSize: 10,
+                      fontFamily: "var(--font-mono)",
+                      color: i === 0 ? "var(--green)" : "var(--muted)",
+                      background: i === 0 ? "rgba(0,255,135,0.1)" : "rgba(255,255,255,0.04)",
+                      padding: "2px 8px",
+                      borderRadius: 4,
+                    }}
+                  >
+                    #{i + 1}
+                  </span>
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 500 }}>{o.label}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+      </div>
 
-        {/* Development plan */}
-        <div className="card fade-up" style={{ animationDelay: "0.26s" }}>
-          <SectionHeader
-            title="DEVELOPMENT PLAN"
-            subtitle="Personalised training blueprint"
-          />
+      {/* ── Development Phase (separate section) ── */}
+      <div className="fade-up" style={{ animationDelay: "0.24s" }}>
+        <SectionHeader
+          title="DEVELOPMENT PHASE"
+          subtitle="Personalised training blueprint"
+        />
+        <div className="card" style={{ padding: 24 }}>
           {devPlan.map((p, i) => (
             <div
               key={i}
