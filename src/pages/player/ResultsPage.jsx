@@ -57,6 +57,33 @@ export default function ResultsPage({ user, report }) {
   const positions = recommendPositions(report.metrics);
   const devPlan = generateDevelopmentPlan(report.metrics, tier);
 
+  const tierOpportunity = {
+    A: {
+      name: "National Elite Trial Invite",
+      date: "Mar 30, 2026",
+      location: "National Elite Trial · New Delhi",
+    },
+    B: {
+      name: "High Performance Training Camp",
+      date: "Mar 22, 2026",
+      location: "High Performance Camp · Mumbai",
+    },
+    C: {
+      name: "Development Clinic Selection",
+      date: "Mar 15, 2026",
+      location: "Development Clinic · Bengaluru",
+    },
+    D: {
+      name: "Grassroots Talent Festival",
+      date: "Mar 08, 2026",
+      location: "Grassroots Festival · Local District",
+    },
+  }[tier.tier] || {
+    name: "Regional Development Camp",
+    date: "Mar 10, 2026",
+    location: "Regional Camp · India",
+  };
+
   // Radar chart data
   const radarData = Object.entries(report.metrics).map(([key, val]) => ({
     metric:
@@ -354,6 +381,18 @@ export default function ResultsPage({ user, report }) {
                   >
                     {w.detail}
                   </div>
+                  <a
+                    href="#development-phase"
+                    style={{
+                      display: "inline-block",
+                      marginTop: 4,
+                      fontSize: 11,
+                      color: "var(--cyan)",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    View drills to improve this area
+                  </a>
                 </div>
               ))
             )}
@@ -382,12 +421,15 @@ export default function ResultsPage({ user, report }) {
                 Opportunities
               </span>
             </div>
-            {swot.opportunities.length === 0 ? (
-              <p style={{ fontSize: 12, color: "var(--muted)" }}>
-                Excellent — all metrics in strength zone!
-              </p>
-            ) : (
-              swot.opportunities.map((o) => (
+            {(swot.opportunities.length ? swot.opportunities : [
+              {
+                key: "tier-opportunity",
+                label: `Tier ${tier.tier} Opportunity`,
+                value: score,
+                detail: "Upcoming event aligned with your current tier.",
+                gain: "",
+              },
+            ]).map((o) => (
                 <div key={o.key} style={{ marginBottom: 10 }}>
                   <div
                     style={{
@@ -428,9 +470,65 @@ export default function ResultsPage({ user, report }) {
                   >
                     {o.gain}
                   </div>
+                  <div
+                    style={{
+                      marginTop: 6,
+                      paddingTop: 6,
+                      borderTop: "1px dashed var(--border)",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: 8,
+                    }}
+                  >
+                    <div>
+                      <div
+                        style={{
+                          fontSize: 12,
+                          fontWeight: 600,
+                          color: "var(--text)",
+                          marginBottom: 2,
+                        }}
+                      >
+                        {tierOpportunity.name}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 11,
+                          color: "var(--muted2)",
+                        }}
+                      >
+                        Date:{" "}
+                        <span style={{ color: "var(--text)" }}>
+                          {tierOpportunity.date}
+                        </span>
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 11,
+                          color: "var(--muted2)",
+                        }}
+                      >
+                        Location:{" "}
+                        <span style={{ color: "var(--text)" }}>
+                          {tierOpportunity.location}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      className="btn-ghost"
+                      style={{
+                        padding: "6px 10px",
+                        fontSize: 11,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      Apply
+                      <ChevronRight size={12} style={{ marginLeft: 4 }} />
+                    </button>
+                  </div>
                 </div>
-              ))
-            )}
+              ))}
           </div>
 
           {/* Threats */}
@@ -526,7 +624,11 @@ export default function ResultsPage({ user, report }) {
       </div>
 
       {/* ── Development Phase (separate section) ── */}
-      <div className="fade-up" style={{ animationDelay: "0.24s" }}>
+      <div
+        id="development-phase"
+        className="fade-up"
+        style={{ animationDelay: "0.24s" }}
+      >
         <SectionHeader
           title="DEVELOPMENT PHASE"
           subtitle="Personalised training blueprint"
