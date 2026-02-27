@@ -23,7 +23,7 @@ import MapPage         from './pages/player/MapPage';
 // ── Coach Pages ──
 import CoachDashboard    from './pages/coach/CoachDashboard';
 import AthleteDetail     from './pages/coach/AthleteDetail';
-import CoachAnalytics    from './pages/coach/CoachAnalytics';
+import TeamBuildingPage  from './pages/coach/TeamBuildingPage';
 import CompareAthletes   from './pages/coach/CompareAthletes';
 import CoachMeetingsPage from './pages/coach/CoachMeetingsPage';
 import CoachFAQPage      from './pages/coach/CoachFAQPage';
@@ -127,20 +127,18 @@ export default function App() {
       setCoachPage(p);
       if (p !== 'athleteDetail') setSelectedAthlete(null);
     };
-    const activeNavPage = coachPage === 'athleteDetail' ? 'athletes' : coachPage;
+    const activeNavPage = coachPage === 'athleteDetail' ? 'dashboard' : coachPage;
 
     return (
       <CoachLayout user={user} activePage={activeNavPage} setPage={nav} onLogout={handleLogout}>
-        {coachPage === 'dashboard'    && <CoachDashboard onViewAthlete={handleViewAthlete} />}
-        {(coachPage === 'athletes' || coachPage === 'athleteDetail') && (
-          selectedAthlete
-            ? <AthleteDetail athlete={selectedAthlete} onBack={() => { setSelectedAthlete(null); setCoachPage('athletes'); }} />
-            : <CoachDashboard onViewAthlete={handleViewAthlete} />
+        {coachPage === 'dashboard'      && <CoachDashboard onViewAthlete={handleViewAthlete} />}
+        {coachPage === 'athleteDetail'  && selectedAthlete && (
+          <AthleteDetail athlete={selectedAthlete} onBack={() => { setSelectedAthlete(null); setCoachPage('dashboard'); }} />
         )}
-        {coachPage === 'analytics'  && <CoachAnalytics />}
-        {coachPage === 'compare'    && <CompareAthletes />}
-        {coachPage === 'meetings'   && <CoachMeetingsPage user={user} />}
-        {coachPage === 'faq'        && <CoachFAQPage />}
+        {coachPage === 'teamBuilding'  && <TeamBuildingPage />}
+        {coachPage === 'compare'        && <CompareAthletes />}
+        {coachPage === 'meetings'       && <CoachMeetingsPage user={user} />}
+        {coachPage === 'faq'            && <CoachFAQPage />}
       </CoachLayout>
     );
   }

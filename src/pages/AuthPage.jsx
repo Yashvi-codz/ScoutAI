@@ -4,7 +4,7 @@
 //  Signup → ProfileSetupPage (step 2 of 3)
 // ═══════════════════════════════════════════════════════
 import { useState } from 'react';
-import { User, Users, Eye, EyeOff, Crosshair, Shield } from 'lucide-react';
+import { User, Users, Eye, EyeOff, Shield } from 'lucide-react';
 
 export default function AuthPage({ role, onSignupSuccess, onLoginSuccess, onBack }) {
   const [mode,     setMode]     = useState('login');
@@ -69,10 +69,12 @@ export default function AuthPage({ role, onSignupSuccess, onLoginSuccess, onBack
       <div className="fade-up" style={{ width: '100%', maxWidth: 460, position: 'relative', zIndex: 1 }}>
 
         {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 40, justifyContent: 'center' }}>
-          <div style={{ width: 38, height: 38, background: `linear-gradient(135deg,${color},${colorDim})`, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Crosshair size={21} color="#000" />
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 40, gap: 10 }}>
+          <img
+            src="/logo.jpeg"
+            alt="ScoutAI logo"
+            style={{ height:48, width:'auto', borderRadius:12, display:'block' }}
+          />
           <span style={{ fontFamily: 'var(--font-head)', fontSize: 24, letterSpacing: 3 }}>SCOUT AI</span>
         </div>
 

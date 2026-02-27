@@ -2,7 +2,7 @@
 //  ScoutAI — Player Layout v2 (full-screen sidebar)
 // ═══════════════════════════════════════════════════════
 
-import { Home, Video, FileText, TrendingUp, LogOut, Crosshair, Users, Calendar, HelpCircle, MapPin } from 'lucide-react';
+import { Home, Video, FileText, TrendingUp, LogOut, Users, Calendar, HelpCircle, MapPin } from 'lucide-react';
 import { Avatar } from '../ui/SharedComponents';
 
 const NAV_ITEMS_MAIN = [
@@ -26,12 +26,14 @@ export default function PlayerLayout({ user, activePage, setPage, onLogout, chil
       <aside className="app-sidebar">
         {/* Logo */}
         <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:26, padding:'0 4px' }}>
-          <div style={{ width:36, height:36, background:'linear-gradient(135deg,var(--green),var(--cyan))', borderRadius:10, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-            <Crosshair size={20} color="#000" />
-          </div>
+          <img
+            src="/logo.jpeg"
+            alt="ScoutAI logo"
+            style={{ height:40, width:'auto', borderRadius:10, display:'block', flexShrink:0 }}
+          />
           <div>
-            <div style={{ fontFamily:'var(--font-head)', fontSize:20, letterSpacing:3, lineHeight:1 }}>SCOUT AI</div>
-            <div style={{ fontSize:9, color:'var(--muted)', letterSpacing:1.5, marginTop:2 }}>SYNAPSE.AI</div>
+            <div style={{ fontFamily:'var(--font-head)', fontSize:18, letterSpacing:2.5, lineHeight:1 }}>SCOUT AI</div>
+            <div style={{ fontSize:9, color:'var(--muted)', letterSpacing:1.5, marginTop:2 }}>ATHLETE PORTAL</div>
           </div>
         </div>
 

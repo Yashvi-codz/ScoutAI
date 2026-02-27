@@ -22,9 +22,11 @@ export default function LandingPage({ onChooseRole }) {
       {/* Header */}
       <header style={{ padding:'24px 60px', display:'flex', justifyContent:'space-between', alignItems:'center', position:'relative', zIndex:1, borderBottom:'1px solid var(--border)', background:'rgba(7,9,15,0.7)', backdropFilter:'blur(12px)' }}>
         <div style={{ display:'flex', alignItems:'center', gap:14 }}>
-          <div style={{ width:42, height:42, background:'linear-gradient(135deg,var(--green),var(--cyan))', borderRadius:12, display:'flex', alignItems:'center', justifyContent:'center' }}>
-            <Crosshair size={24} color="#000" />
-          </div>
+          <img
+            src="/logo.jpeg"
+            alt="ScoutAI logo"
+            style={{ height:48, width:'auto', borderRadius:12, display:'block' }}
+          />
           <div>
             <div style={{ fontFamily:'var(--font-head)', fontSize:26, letterSpacing:3, lineHeight:1 }}>SCOUT AI</div>
             <div style={{ fontSize:10, color:'var(--muted)', letterSpacing:2 }}>SYNAPSE.AI × IGDTUW</div>

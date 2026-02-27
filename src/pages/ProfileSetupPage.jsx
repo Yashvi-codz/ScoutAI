@@ -4,7 +4,7 @@
 //  Different fields for Player vs Coach
 // ═══════════════════════════════════════════════════════
 import { useState } from 'react';
-import { User, Users, Crosshair, MapPin, Ruler, Weight, Calendar, Briefcase, ChevronRight, CheckCircle, Star } from 'lucide-react';
+import { User, Users, MapPin, Ruler, Weight, Calendar, Briefcase, ChevronRight, CheckCircle, Star } from 'lucide-react';
 
 const INDIA_STATES = ['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Delhi','Goa','Gujarat','Haryana','Himachal Pradesh','Jammu & Kashmir','Jharkhand','Karnataka','Kerala','Ladakh','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal'];
 
@@ -98,10 +98,12 @@ export default function ProfileSetupPage({ partialUser, onComplete }) {
       <div className="fade-up" style={{ width: '100%', maxWidth: 600, position: 'relative', zIndex: 1 }}>
 
         {/* Logo + Title */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 36 }}>
-          <div style={{ width: 36, height: 36, background: `linear-gradient(135deg,${color},${colorDim})`, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Crosshair size={20} color="#000" />
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 36, gap: 10 }}>
+          <img
+            src="/logo.jpeg"
+            alt="ScoutAI logo"
+            style={{ height:44, width:'auto', borderRadius:12, display:'block' }}
+          />
           <span style={{ fontFamily: 'var(--font-head)', fontSize: 22, letterSpacing: 3 }}>SCOUT AI</span>
         </div>
 

@@ -3,14 +3,13 @@
 //  Removed: Coaching Locations (map)
 //  Updated: Meetings → Coach Meetings
 // ═══════════════════════════════════════════════════════
-import { Home, Users, BarChart2, GitCompare, LogOut, Crosshair, Calendar, HelpCircle } from 'lucide-react';
+import { Home, Users, GitCompare, LogOut, Calendar, HelpCircle } from 'lucide-react';
 import { Avatar } from '../ui/SharedComponents';
 
 const NAV_MAIN = [
-  { id: 'dashboard',  icon: Home,       label: 'Dashboard' },
-  { id: 'athletes',   icon: Users,      label: 'All Athletes' },
-  { id: 'analytics',  icon: BarChart2,  label: 'Analytics' },
-  { id: 'compare',    icon: GitCompare, label: 'Compare Athletes' },
+  { id: 'dashboard',     icon: Home,        label: 'Dashboard' },
+  { id: 'teamBuilding',  icon: Users,       label: 'Team Building' },
+  { id: 'compare',       icon: GitCompare,  label: 'Compare Athletes' },
 ];
 
 const NAV_TOOLS = [
@@ -25,11 +24,13 @@ export default function CoachLayout({ user, activePage, setPage, onLogout, child
       <aside className="app-sidebar">
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 26, padding: '0 4px' }}>
-          <div style={{ width: 36, height: 36, background: 'linear-gradient(135deg,var(--cyan),var(--cyan-dim))', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <Crosshair size={20} color="#000" />
-          </div>
+          <img
+            src="/logo.jpeg"
+            alt="ScoutAI logo"
+            style={{ height:40, width:'auto', borderRadius:10, display:'block', flexShrink:0 }}
+          />
           <div>
-            <div style={{ fontFamily: 'var(--font-head)', fontSize: 20, letterSpacing: 3, lineHeight: 1 }}>SCOUT AI</div>
+            <div style={{ fontFamily: 'var(--font-head)', fontSize: 18, letterSpacing: 2.5, lineHeight: 1 }}>SCOUT AI</div>
             <div style={{ fontSize: 9, color: 'var(--muted)', letterSpacing: 1.5, marginTop: 2 }}>COACH PORTAL</div>
           </div>
         </div>
